@@ -13,17 +13,17 @@ import com.rodrigofries.certification_nlw.modules.students.useCases.VerifyIfHasC
 @RequestMapping("/students")
 public class StudentController {
 
-  // Preciso usar o meu USECASE
-  @Autowired
-  private VerifyIfHasCertificationUseCase verifyIfHasCertificationUseCase;
+    // Preciso usar o meu USECASE
+    @Autowired
+    private VerifyIfHasCertificationUseCase verifyIfHasCertificationUseCase;
 
-  @PostMapping("/verifyIfHasCertication")
-  public String verifyIfHasCertication(@RequestBody VerifyHasCertificationDTO verifyHasCertificationDTO) {
-    // email & technology
-    var result = this.verifyIfHasCertificationUseCase.execute(verifyHasCertificationDTO);
-    if (result) {
-      return "Usuário já fez a prova";
+    @PostMapping("/verifyIfHasCertication")
+    public String verifyIfHasCertication(@RequestBody VerifyHasCertificationDTO verifyHasCertificationDTO) {
+        // email & technology
+        var result = this.verifyIfHasCertificationUseCase.execute(verifyHasCertificationDTO);
+        if (result) {
+            return "Usuário já fez a prova";
+        }
+        return "Usuário pode fazer a prova";
     }
-    return "Usuário pode fazer a prova";
-  }
 }
